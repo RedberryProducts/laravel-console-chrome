@@ -1,0 +1,8 @@
+{
+	"name": "Laravel Console",
+	"description": "Real-Time console logger for laravel application",
+	"minimum_chrome_version": "10.0",
+	"devtools_page": "html/app.html",
+	"manifest_version": 3,
+	"version": "1.0"
+}
