@@ -1,5 +1,14 @@
 <template>
 	<div>
+		<div class="flex h-7 bg-gray-200 items-center">
+			<button 
+				@click="forgetLogs()" 
+				class="bg-gray-100 ml-2 px-1 rounded border border-white"
+				style="outline: none"
+			>
+				clear
+			</button>
+		</div>
 		<log 
 			v-for="logMessage in logs" 
 			:key="logMessage.datetime"
@@ -10,7 +19,7 @@
 
 <script>
 import Log from './Log.vue';
-import { getLogs } from './http';
+import { getLogs, forgetLogs } from './http';
 
 export default {
 	data() {
@@ -19,9 +28,26 @@ export default {
 		};
 	},
   components: { Log },
+	methods: {
+		clearLogs() {
+			this.logs = [];
+		},
+		async updateLogs() {
+			this.logs = await getLogs();
+		},
+		async forgetLogs() {
+			await forgetLogs();
+			this.clearLogs();
+		}
+	},
 	async mounted() {
-		const logs = await getLogs();
-		this.logs = logs;
+		this.updateLogs();
+
+		const that = this;
+		chrome.tabs.onUpdated.addListener(async function(_, {status}) {
+			status === 'loading' && that.clearLogs();
+			status === 'complete' && that.updateLogs();
+		});
 	}
 }
 </script>
