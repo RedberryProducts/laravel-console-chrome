@@ -11,5 +11,11 @@
 	"host_permissions": [
 		"https://*/",
 		"http://*/"
-	]
+	],
+	"action": {
+		"default_icon": "./images/laravel-console.png"
+	},
+	"icons": {
+		"128": "./images/laravel-console.png"
+	}
 }
