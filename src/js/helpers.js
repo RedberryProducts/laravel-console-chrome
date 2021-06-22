@@ -16,3 +16,15 @@ export const getURL = async() => {
 	const {origin} = new URL(url);
 	return origin;
 }
+
+/**
+ * Determine if string is JSON.
+ */
+export const isJSON = (str) => {
+	try {
+			JSON.parse(str);
+	} catch (e) {
+			return false;
+	}
+	return true;
+}

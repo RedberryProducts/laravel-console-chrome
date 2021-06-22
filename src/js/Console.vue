@@ -12,7 +12,7 @@
 		<log 
 			v-for="logMessage in logs" 
 			:key="logMessage.datetime"
-			:data="logMessage.formatted" 
+			:data="logMessage.message" 
 		/>
 	</div>
 </template>
