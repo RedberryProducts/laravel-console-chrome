@@ -11,6 +11,11 @@ module.exports = {
         outline: {
             'none': 'none',
         },
+        colors: {
+            'string': '#c41a17',
+            'number': '#1d00d0',
+            'null': '#5e5e5e',
+        }
     },
   },
   variants: {

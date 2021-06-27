@@ -2,7 +2,7 @@
 	<div>
 		<div class="flex h-6.5 bg-gray-100 border-b border-gray-300 items-center"> 
                     <img src="./../../public/images/laravel.png" class="h-4 ml-2.5 mr-2.75" />
-                    <clear-icon 
+                    <ClearIcon
                         classes="h-3.25 cursor-pointer" 
                         strokeClasses="bg-gray-300"
                         @click="forgetLogs()"
@@ -15,16 +15,16 @@
                         :placeholder="lang.search"
                     />
                 </div>
-                <log 
-                    v-for="logMessage in logs" 
-                    :key="logMessage.datetime"
-                    :data="logMessage.message" 
+                <Log 
+                    v-for="item in presentableLogs" 
+                    :key="item.id"
+                    :data="item" 
                 />
 	</div>
 </template>
 
 <script>
-import Log from './Log.vue';
+import Log from './Logs/Log.vue';
 import ClearIcon from './Icons/Clear.vue';
 import { getLogs, forgetLogs } from './http';
 
@@ -32,13 +32,13 @@ export default {
     data() {
         return {
             logs: [],
-            presentableLogs: [],
             searchword: '',
             lang: window.lang,
         };
     },
     computed: {
         presentableLogs() {
+            console.log({logs: this.logs});
             const trimmedSearchword = this.searchword.trim();
             if(trimmedSearchword === '') {
                 return this.logs;
@@ -58,7 +58,8 @@ export default {
             this.logs = [];
         },
         async updateLogs() {
-            this.logs = await getLogs();
+            const retrievedLogs = await getLogs();
+            this.logs = retrievedLogs;
         },
         async forgetLogs() {
             await forgetLogs();
