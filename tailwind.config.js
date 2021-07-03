@@ -15,7 +15,12 @@ module.exports = {
             'string': '#c41a17',
             'number': '#1d00d0',
             'null': '#5e5e5e',
-        }
+            'key': '#881391',
+        },
+        fontSize: {
+            'xxs': '.6rem',
+            'xxxs': '.5rem',
+        },
     },
   },
   variants: {

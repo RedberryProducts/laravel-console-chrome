@@ -25,6 +25,7 @@
 
 <script>
 import Log from './Logs/Log.vue';
+import Node from './Logs/Node.vue';
 import ClearIcon from './Icons/Clear.vue';
 import { getLogs, forgetLogs } from './http';
 import { getMainTabId } from './helpers';
@@ -52,7 +53,7 @@ export default {
             }
         }
     },
-    components: { Log, ClearIcon },
+    components: { Log, ClearIcon, Node },
     methods: {
         clearLogs() {
             this.logs = [];
