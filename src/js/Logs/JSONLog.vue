@@ -6,6 +6,8 @@
 
 <script>
     import Node from './Node.vue';
+    import { getType } from '../helpers.js';
+
     export default {
         props: {
             data: '',
@@ -19,10 +21,7 @@
         components: { Node, },
         beforeMount() {
             const passedData = this.data.message;
-
-            if(Array.isArray(passedData)) {
-                this.type = 'array';
-            }
+            this.type = getType(passedData);
         }
     }
 </script>

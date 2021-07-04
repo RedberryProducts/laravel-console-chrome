@@ -31,3 +31,18 @@ export const isJSON = (str) => {
     }
     return true;
 }
+
+/**
+ * Get variable type.
+ */
+export const getType = (el) => {
+    if(el === null) {
+        return 'null';
+    }
+        
+    if(Array.isArray(el)) {
+        return 'array';
+    }
+
+    return typeof(el);
+}
