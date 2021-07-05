@@ -4,7 +4,11 @@
   "description": "Laravel console is a friendly logger like js debbuging console",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx mix",
+    "prod": "npx mix --production",
+    "watch": "npx mix watch",
+    "build": "cd public && zip -r 'laravel-console - latest.zip' . && mv 'laravel-console - latest.zip' ../bin"
   },
   "author": "",
   "license": "ISC",
